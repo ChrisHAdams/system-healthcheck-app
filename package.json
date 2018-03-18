@@ -1,0 +1,35 @@
+{
+  "name": "system-healthcheck",
+  "version": "1.0.0",
+  "description": "Healthcheck app for monitoring services, databases and APIs.",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "prettier": "gulp prettier",
+    "watch": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Adams",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "oracledb": "^2.1.2",
+    "ping": "^0.2.2",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2",
+    "winston": "^2.4.1",
+    "winston-daily-rotate-file": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-prettier-plugin": "^1.2.0",
+    "gulp-sync": "^0.1.4",
+    "nodemon": "^1.17.2",
+    "onchange": "^3.3.0",
+    "prettier": "1.11.1"
+  }
+}
