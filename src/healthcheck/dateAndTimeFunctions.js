@@ -1,11 +1,10 @@
 class DateAndTime {
 
-  static getReverseDate(){
+  static getReverseDate(d){
 
-    const d = new Date();
-    const day = d.getDay();
-    const month = d.getMonth();
-    const year = d.getFullYear();
+    const day = ('0' + d.getDate().toString()).slice(-2);
+    const month = ('0' + (d.getMonth() + 1).toString()).slice(-2);
+    const year = d.getFullYear().toString();
 
     return(`${year}${month}${day}`);
   }

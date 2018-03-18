@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
   res.send(`System Healthcheck Root.`);
 });
 
-app.get('/runMonitor', (req, res) => {
+app.get('/api/runMonitor', (req, res) => {
 
   logger.info("Receive runMonitor request");
 
@@ -30,7 +30,7 @@ app.get('/runMonitor', (req, res) => {
   });
 });
 
-app.get('/getItems', (req, res) => {
+app.get('/api/getItems', (req, res) => {
 
   logger.info("Receive getItems request");
 

@@ -557,3 +557,24 @@ service - Open Library API.  Status Code - 200.  Response Time - 3186ms.
     Response Time Check Failed.  Expected 2000ms.  Actual 3186ms.
 server - Google IP Ping.  Status Code - Alive.  Response Time - 32.621ms.
 ================================================================================
+
+18\03\2018 : 21:50:34
+website - BBC Website.  Status Code - 200.  Response Time - 753ms.
+website - Google Website.  Status Code - 200.  Response Time - 333ms.
+website - Sky Website.  Status Code - 200.  Response Time - 216ms.
+service - Weather API.  Status Code - 200.  Response Time - 258ms.
+service - Open Library API.  Status Code - 200.  Response Time - 3684ms.
+    Response Time Check Failed.  Expected 2000ms.  Actual 3684ms.
+server - Google IP Ping.  Status Code - Alive.  Response Time - 26.7ms.
+================================================================================
+
+18\03\2018 : 21:51:38
+website - BBC Website.  Status Code - 200.  Response Time - 836ms.
+    Response Time Check Failed.  Expected 800ms.  Actual 836ms.
+website - Google Website.  Status Code - 200.  Response Time - 337ms.
+website - Sky Website.  Status Code - 200.  Response Time - 230ms.
+service - Weather API.  Status Code - 200.  Response Time - 175ms.
+service - Open Library API.  Status Code - 200.  Response Time - 2953ms.
+    Response Time Check Failed.  Expected 2000ms.  Actual 2953ms.
+server - Google IP Ping.  Status Code - Alive.  Response Time - 37.622ms.
+================================================================================

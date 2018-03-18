@@ -7,7 +7,7 @@
     "start": "./node_modules/nodemon/bin/nodemon.js index.js",
     "prettier": "gulp prettier",
     "watch": "./node_modules/nodemon/bin/nodemon.js index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha 'src/**/*.tests.js' --reporter spec"
   },
   "author": "Chris Adams",
   "license": "ISC",

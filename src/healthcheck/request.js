@@ -11,7 +11,7 @@ async function makeHttpRequest(requestObj,log){
   const response = await rp(options);
   const end      = Date.now() - start;
 
-  log.info(`Called ${requestObj.name}.  Response Code : ${response.statusCode}.  Response Time : ${end}.`);
+  log.info(`    Called ${requestObj.name}.  Response Code : ${response.statusCode}.  Response Time : ${end}.`);
 
   const responseObj=JSON.parse(`{"responseCode": ${response.statusCode}, "responseTime": ${end}}`);
 
