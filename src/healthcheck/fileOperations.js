@@ -1,5 +1,5 @@
 
-exports.writeLineToFile = function (path, fileName, outputString) {
+exports.writeLineToFile = function (log, path, fileName, outputString) {
 
   const fs = require('fs');
 

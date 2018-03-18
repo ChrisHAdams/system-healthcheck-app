@@ -26,7 +26,7 @@ function Healthcheck(itemsToCheck, log) {
   }
 
   function writeLineToFile(textToWrite){
-    writeLineToFileFunc(filePath, fileName, textToWrite);
+    writeLineToFileFunc(log, filePath, fileName, textToWrite);
   }
 
   this.monitor = async function(){

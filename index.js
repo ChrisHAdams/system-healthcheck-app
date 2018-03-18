@@ -9,6 +9,10 @@ var logger = require('./src/logger.js');
 // const router = express.Router();
 const appPort = 8006;
 
+function intervalFunc() {
+  logger.info('Running monitor from interval');
+  myObject.monitor();
+}
 
 myObject = new HealthCheck(sysItems, logger);
 //myObject.monitor();
@@ -38,8 +42,11 @@ app.get('/api/getItems', (req, res) => {
 
 });
 
+
 app.listen(appPort, () => {
   logger.info(`Healthcheck App Started.  Live at Port ${appPort}.`);
+
+  setInterval(intervalFunc, 600000);
 
 });
 
