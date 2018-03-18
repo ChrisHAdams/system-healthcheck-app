@@ -11,12 +11,31 @@ const appPort = 8006;
 
 
 myObject = new HealthCheck(sysItems, logger);
-myObject.monitor();
-logger.debug(myObject.getItems());
+//myObject.monitor();
 
 
 app.get('/', (req, res) => {
-  res.send(`System Healthcheck Root.  ${myObject.monitor()}.`);
+  res.send(`System Healthcheck Root.`);
+});
+
+app.get('/runMonitor', (req, res) => {
+
+  logger.info("Receive runMonitor request");
+
+  myObject.monitor()
+    .then(function (result) {
+      res.send(result);
+    }, function(error) {
+      res.error(error);
+  });
+});
+
+app.get('/getItems', (req, res) => {
+
+  logger.info("Receive getItems request");
+
+  res.send(myObject.getItems());
+
 });
 
 app.listen(appPort, () => {

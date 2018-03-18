@@ -32,10 +32,10 @@ function Healthcheck(itemsToCheck, log) {
     return this.itemsToCheck;
   }
 
-  this.monitor = function(){
+
+  this.monitor = async function(){
     log.info("About to run monitoring checks");
 
-    ( async () => {
 
       var arrayLength = this.itemsToCheck.length;
       var start = new Date();
@@ -81,9 +81,8 @@ function Healthcheck(itemsToCheck, log) {
 
       log.info("Completed monitoring checks.");
 
-    })().catch (e => {
-      log.error(e);
-    });
+      return JSON.stringify(this.itemsToCheck);
+
   }
 }
 module.exports = Healthcheck;
