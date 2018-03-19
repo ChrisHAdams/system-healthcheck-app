@@ -4,11 +4,15 @@ async function makeWebServiceRequest(requestObj,log){
 
   var options = {
     uri: requestObj.url,
-    resolveWithFullResponse: true
+    headers: requestObj.headers,
+    resolveWithFullResponse: true,
+    method: requestObj.method,
+    body: requestObj.payload
   };
 
   const start = Date.now();
   //const response = await rp(options);
+  console.log(options);
   var responseObject = await rp(options)
     .then(function(response) {
       const end = Date.now() - start;    

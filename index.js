@@ -15,7 +15,8 @@ function intervalFunc() {
   myObject.monitor();
 }
 
-if(process.env.NODE_ENV ==='pre-production'){
+if ((process.env.NODE_ENV ==='pre-production') ||
+    (process.env.NODE_ENV ==='soatest')) {
   myObject = new HealthCheck(config.get('items'), logger);  
 } else {
   myObject = new HealthCheck(sysItems, logger);  
@@ -51,7 +52,7 @@ app.get('/api/getItems', (req, res) => {
 app.listen(appPort, () => {
   logger.info(`Healthcheck App Started.  Live at Port ${appPort}.`);
 
-  setInterval(intervalFunc, 600000);
+  //setInterval(intervalFunc, 600000);
 
 });
 

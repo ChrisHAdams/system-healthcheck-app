@@ -1,4 +1,5 @@
 const request = require('./request');
+const webService = require('./webService');
 const ping = require('./pingServer');
 const DateAndTime = require('./dateAndTimeFunctions');
 const writeLineToFileFunc = require('./fileOperations').writeLineToFile;

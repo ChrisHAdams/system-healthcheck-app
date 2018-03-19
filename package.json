@@ -7,7 +7,8 @@
     "start": "./node_modules/nodemon/bin/nodemon.js index.js",
     "prettier": "gulp prettier",
     "watch": "./node_modules/nodemon/bin/nodemon.js index.js",
-    "pre-prod": "export NODE_ENV=pre-production; npm install; node node_modules/nodemon/bin/nodemon.js --watch src ./src/index.js",
+    "pre-prod": "export NODE_ENV=pre-production; npm install; node node_modules/nodemon/bin/nodemon.js --watch src ./index.js",
+    "soatest": "export NODE_ENV=soatest; npm install; node node_modules/nodemon/bin/nodemon.js --watch src ./index.js",
     "test": "mocha 'src/**/*.tests.js' --reporter spec"
   },
   "author": "Chris Adams",
