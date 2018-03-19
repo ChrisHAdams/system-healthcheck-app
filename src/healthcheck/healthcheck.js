@@ -3,6 +3,7 @@ const webService = require('./webService');
 const ping = require('./pingServer');
 const DateAndTime = require('./dateAndTimeFunctions');
 const writeLineToFileFunc = require('./fileOperations').writeLineToFile;
+const database = require('./databaseCheck');
 
 const filePath = './monitor_reports';
 const fileName = DateAndTime.getReverseDate(new Date());
@@ -48,6 +49,9 @@ function Healthcheck(itemsToCheck, log) {
         }
         if(this.itemsToCheck[i].checkType === CHECKTYPE.server){
           this.itemsToCheck[i].responseDetails = await ping.makePingRequest(this.itemsToCheck[i], log);
+        }
+        if(this.itemsToCheck[i].checkType === CHECKTYPE.database){
+          this.itemsToCheck[i].responseDetails = await database.makeDatabaseRequest(this.itemsToCheck[i], log);
         }
       }
 

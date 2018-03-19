@@ -7,11 +7,16 @@ async function makePingRequest(requestObj,log){
   const end      = Date.now() - start;
 
   let status = response.alive ? "Alive" : "Dead";
-
-  log.info(`    Called ${requestObj.name}.  Response Code : ${status}.  Response Time : ${response.max}.`);
-
-  const responseObj=JSON.parse(`{"responseCode": "${status}", "responseTime": ${response.max}}`);
-
+  let responseObj = {}
+  
+  if(status == "Alive"){
+    log.info(`    Called ${requestObj.name}.  Response Code : ${status}.  Response Time : ${response.max}.`);
+    responseObj=JSON.parse(`{"responseCode": "${status}", "responseTime": ${response.max}}`);
+  } else {
+    log.info(`    Called ${requestObj.name}.  Response Code : ${status}.  Response Time : ${end}.`);
+    responseObj=JSON.parse(`{"responseCode": "${status}", "responseTime": ${end}}`);
+  }
+  
   return responseObj;
 
 }
