@@ -43,7 +43,7 @@ function Healthcheck(itemsToCheck, log) {
           this.itemsToCheck[i].responseDetails = await request.makeHttpRequest(this.itemsToCheck[i], log);
         }
         if(this.itemsToCheck[i].checkType === CHECKTYPE.service){
-          this.itemsToCheck[i].responseDetails = await request.makeHttpRequest(this.itemsToCheck[i], log);
+          this.itemsToCheck[i].responseDetails = await webService.makeWebServiceRequest(this.itemsToCheck[i], log);
         }
         if(this.itemsToCheck[i].checkType === CHECKTYPE.server){
           this.itemsToCheck[i].responseDetails = await ping.makePingRequest(this.itemsToCheck[i], log);
@@ -60,7 +60,7 @@ function Healthcheck(itemsToCheck, log) {
 
         if(item.hasOwnProperty('expectedResults')){
           if(item.responseDetails.responseCode !== item.expectedResults.expectedStatusCode) {
-            writeLineToFile(`    Status Code Check Failed.  Expected ${item.responseDetails.responseCode}.  Actual ${item.expectedResults.expectedStatusCode}.`);
+            writeLineToFile(`    Status Code Check Failed.  Expected ${item.expectedResults.expectedStatusCode}.  Actual ${item.responseDetails.responseCode}.`);
           }
 
           if(item.responseDetails.responseTime > item.expectedResults.expectedResponseTime){
@@ -72,7 +72,8 @@ function Healthcheck(itemsToCheck, log) {
       writeLineToFile('='.repeat(80));
 
     } catch(err){
-      log.error(err)
+      log.error("In healthcheck.js catch function");
+      log.error(err);
     }
 
     log.info("Completed monitoring checks.");

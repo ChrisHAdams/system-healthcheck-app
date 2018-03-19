@@ -7,11 +7,13 @@
     "start": "./node_modules/nodemon/bin/nodemon.js index.js",
     "prettier": "gulp prettier",
     "watch": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "pre-prod": "export NODE_ENV=pre-production; npm install; node node_modules/nodemon/bin/nodemon.js --watch src ./src/index.js",
     "test": "mocha 'src/**/*.tests.js' --reporter spec"
   },
   "author": "Chris Adams",
   "license": "ISC",
   "dependencies": {
+    "config": "^1.30.0",
     "express": "^4.16.3",
     "oracledb": "^2.1.2",
     "ping": "^0.2.2",

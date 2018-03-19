@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const HealthCheck = require('./src/healthcheck/healthcheck');
 const sysItems = require('./src/healthcheck/itemsToMonitor.json');
+var config = require('config');
 var logger = require('./src/logger.js');
 
 // const router = express.Router();
@@ -14,9 +15,13 @@ function intervalFunc() {
   myObject.monitor();
 }
 
-myObject = new HealthCheck(sysItems, logger);
-//myObject.monitor();
+if(process.env.NODE_ENV ==='pre-production'){
+  myObject = new HealthCheck(config.get('items'), logger);  
+} else {
+  myObject = new HealthCheck(sysItems, logger);  
+}
 
+//myObject.monitor();
 
 app.get('/', (req, res) => {
   res.send(`System Healthcheck Root.`);
