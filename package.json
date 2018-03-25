@@ -4,11 +4,8 @@
   "description": "Healthcheck app for monitoring services, databases and APIs.",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
-    "prettier": "gulp prettier",
-    "watch": "./node_modules/nodemon/bin/nodemon.js index.js",
-    "pre-prod": "export NODE_ENV=pre-production; npm install; node node_modules/nodemon/bin/nodemon.js --watch src ./index.js",
-    "soatest": "export NODE_ENV=soatest; npm install; node node_modules/nodemon/bin/nodemon.js --watch src ./index.js",
+    "start": "export NODE_ENV=soatest; node index.js",
+    "watch": "export NODE_ENV=soatest; npm install; node node_modules/nodemon/bin/nodemon.js --watch src --watch config index.js",
     "test": "mocha 'src/**/*.tests.js' --reporter spec"
   },
   "author": "Chris Adams",
@@ -16,6 +13,7 @@
   "dependencies": {
     "config": "^1.30.0",
     "express": "^4.16.3",
+    "nodemailer": "^4.6.3",
     "oracledb": "^1.13.0",
     "ping": "^0.2.2",
     "request": "^2.85.0",
@@ -24,15 +22,7 @@
     "winston-daily-rotate-file": "^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "gulp": "^3.9.1",
-    "gulp-nodemon": "^2.2.1",
-    "gulp-prettier-plugin": "^1.2.0",
-    "gulp-sync": "^0.1.4",
     "nodemon": "^1.17.2",
-    "onchange": "^3.3.0",
-    "prettier": "1.11.1"
+    "onchange": "^3.3.0"
   }
 }

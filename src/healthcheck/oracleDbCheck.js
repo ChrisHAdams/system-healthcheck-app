@@ -3,7 +3,7 @@ const oracle = require('oracledb');
 async function makeOracleDbRequest(requestObj,log){
 
   const start = Date.now();
-  
+
   var responseObj = await oracle.getConnection(
     {
       user          : requestObj.dbDetails.user,
@@ -26,7 +26,7 @@ async function makeOracleDbRequest(requestObj,log){
         })
         .catch(function(err) {
           const end = Date.now() - start;
-          aconn.close();
+          conn.close();
           log.info(`    Called ${requestObj.name}.  Response Code : ${err.message}.  Response Time : ${end}ms.`);
           const responseObj=JSON.parse(`{"responseCode": ${err.message}, "responseTime": ${end}}`);
           return responseObj; 

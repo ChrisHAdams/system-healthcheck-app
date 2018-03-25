@@ -1,28 +1,20 @@
-// Some header
-
 const express = require('express');
 const app = express();
 const HealthCheck = require('./src/healthcheck/healthcheck');
-const sysItems = require('./src/healthcheck/itemsToMonitor.json');
+
 var config = require('config');
 var logger = require('./src/logger.js');
 
-// const router = express.Router();
 const appPort = 8006;
+
+let healthcheckObject = new HealthCheck({"items": config.get('items'), "sendEmail": true}, logger);
 
 function intervalFunc() {
   logger.info('Running monitor from interval');
-  myObject.monitor();
+  //let intervalHealthcheckObject = new HealthCheck({"items": config.get('items'), "sendEmail": true}, logger);
+  healthcheckObject.monitor();
 }
 
-if ((process.env.NODE_ENV ==='pre-production') ||
-    (process.env.NODE_ENV ==='soatest')) {
-  myObject = new HealthCheck(config.get('items'), logger);  
-} else {
-  myObject = new HealthCheck(sysItems, logger);  
-}
-
-//myObject.monitor();
 
 app.get('/', (req, res) => {
   res.send(`System Healthcheck Root.`);
@@ -30,21 +22,22 @@ app.get('/', (req, res) => {
 
 app.get('/api/runMonitor', (req, res) => {
 
-  logger.info("Receive runMonitor request");
+  logger.info("Received on-demand runMonitor request");
 
-  myObject.monitor()
+  healthcheckObject.monitor()
     .then(function (result) {
       res.send(result);
-    }, function(error) {
-      res.error(error);
-  });
+    })
+    .catch(function(error) {
+      res.status(500).send(error);
+    });
 });
 
 app.get('/api/getItems', (req, res) => {
 
-  logger.info("Receive getItems request");
+  logger.info("Received getItems request");
 
-  res.send(myObject.getItems());
+  res.send(healthcheckObject.getItems());
 
 });
 
@@ -52,7 +45,7 @@ app.get('/api/getItems', (req, res) => {
 app.listen(appPort, () => {
   logger.info(`Healthcheck App Started.  Live at Port ${appPort}.`);
 
-  //setInterval(intervalFunc, 600000);
+  setInterval(intervalFunc, 600000);
 
 });
 
