@@ -34,21 +34,21 @@ function Healthcheck(options, log) {
 
   function cleanseItems(items){
 
-    let clonedArray = deepCopy(items);   
+    let clonedArray = deepCopy(items);
     let arrayLength = clonedArray.length;
-   
+
     for (var i = 0; i < arrayLength; i++) {
       if(clonedArray[i].checkType === CHECKTYPE.database){
         clonedArray[i].dbDetails.password = "xxxxxxx";
       }
     }
-    
+
     return clonedArray;
-  
+
   }
-  
+
   async function runChecks(items) {
- 
+
     try {
       for (var i = 0; i < items.length; i++) {
 
@@ -68,16 +68,16 @@ function Healthcheck(options, log) {
     } catch(err){
       log.error("In runChecks (healthcheck.js) catch function");
       log.error(err);
-    } 
+    }
   }
-  
+
   function checkResults(start, items){
 
   let failures = false;
-  
+
   writeLineToFile("");
   writeLineToFile(DateAndTime.getDateAndTime(start));
-    
+
   for (var j = 0; j < items.length; j++) {
 
     let item = items[j];
@@ -103,11 +103,11 @@ function Healthcheck(options, log) {
   }
 
   writeLineToFile('='.repeat(80));
-  
+
   return failures;
-    
+
   }
-  
+
   this.monitor = async function() {
 
     log.info("About to run monitoring checks");
@@ -117,8 +117,8 @@ function Healthcheck(options, log) {
     var start = new Date();
 
     await runChecks(clonedItems);
-   
-    let failures = checkResults(start, clonedItems);  
+
+    let failures = checkResults(start, clonedItems);
 
     if((failures) && (this.sendEmail)){
 

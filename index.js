@@ -1,17 +1,18 @@
 const express = require('express');
 const app = express();
 const HealthCheck = require('./src/healthcheck/healthcheck');
+const os = require('os');
 
 var config = require('config');
 var logger = require('./src/logger.js');
 
 const appPort = 8006;
 
-let healthcheckObject = new HealthCheck({"items": config.get('items'), "sendEmail": true}, logger);
+let healthcheckObject = new HealthCheck({"items": config.get('items'), "sendEmail": false}, logger);
 
 function intervalFunc() {
   logger.info('Running monitor from interval');
-  //let intervalHealthcheckObject = new HealthCheck({"items": config.get('items'), "sendEmail": true}, logger);
+
   healthcheckObject.monitor();
 }
 
@@ -43,8 +44,9 @@ app.get('/api/getItems', (req, res) => {
 
 
 app.listen(appPort, () => {
-  logger.info(`Healthcheck App Started.  Live at Port ${appPort}.`);
-
+  logger.info(`Healthcheck App Started.  Live at http://${os.hostname()}/${appPort}.`);
+  logger.info(`Get list of items to monitor.  http://${os.hostname()}/${appPort}/api/getItems.`);
+  logger.info(`Run the monitor.  http://${os.hostname()}/${appPort}/api/runMonitor.`);
   setInterval(intervalFunc, 600000);
 
 });
