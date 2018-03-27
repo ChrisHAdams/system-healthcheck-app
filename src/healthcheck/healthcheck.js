@@ -1,9 +1,9 @@
-const request = require('./request');
-const webService = require('./webService');
-const ping = require('./pingServer');
+const request = require('./checks/httpRequestCheck');
+const webService = require('./checks/webServiceCheck');
+const ping = require('./checks/pingServerCheck');
 const DateAndTime = require('./dateAndTimeFunctions');
 const writeLineToFileFunc = require('./fileOperations').writeLineToFile;
-const database = require('./databaseCheck');
+const database = require('./checks/databaseCheck');
 const filePath = './monitor_reports';
 const fileName = process.env.NODE_ENV + "-" + DateAndTime.getReverseDate(new Date());
 const sendAlertEmail = require('./sendEmails');
