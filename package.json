@@ -1,6 +1,6 @@
 {
   "name": "system-healthcheck-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Healthcheck app for monitoring services, databases and APIs.",
   "main": "index.js",
   "scripts": {
