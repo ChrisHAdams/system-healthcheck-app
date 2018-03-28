@@ -1,5 +1,5 @@
 {
-  "name": "system-healthcheck",
+  "name": "system-healthcheck-app",
   "version": "1.0.0",
   "description": "Healthcheck app for monitoring services, databases and APIs.",
   "main": "index.js",
@@ -13,11 +13,7 @@
   "dependencies": {
     "config": "^1.30.0",
     "express": "^4.16.3",
-    "nodemailer": "^4.6.3",
-    "oracledb": "v1.12.2",
-    "ping": "^0.2.2",
-    "request": "^2.85.0",
-    "request-promise": "^4.2.2",
+    "system-healthcheck": "^1.0.0",
     "winston": "^2.4.1",
     "winston-daily-rotate-file": "^3.0.0"
   },

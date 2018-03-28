@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const HealthCheck = require('./src/healthcheck/healthcheck');
+const HealthCheck = require('system-healthcheck');
 const os = require('os');
 
 var config = require('config');
