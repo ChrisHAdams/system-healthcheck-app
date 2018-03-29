@@ -3,12 +3,11 @@ const app = express();
 const HealthCheck = require('system-healthcheck');
 const os = require('os');
 
-var config = require('config');
 var logger = require('./src/logger.js');
 
 const appPort = 8006;
 
-let healthcheckObject = new HealthCheck({"items": config.get('items'), "sendEmail": false}, logger);
+let healthcheckObject = new HealthCheck(logger);
 
 function intervalFunc() {
   logger.info('Running monitor from interval');
