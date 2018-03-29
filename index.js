@@ -6,8 +6,9 @@ const os = require('os');
 var logger = require('./src/logger.js');
 
 const appPort = 8006;
+const config = require('config');
 
-let healthcheckObject = new HealthCheck(logger);
+let healthcheckObject = new HealthCheck(config.get('healthcheck'), logger);
 
 function intervalFunc() {
   logger.info('Running monitor from interval');
