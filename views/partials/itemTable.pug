@@ -1,0 +1,12 @@
+include ../mixins/monitorTableMixins.pug
+
+table(class="table table-hover table-dark")
+  tr
+    th Name
+    th Description
+    th Check Type
+  each item in items
+    +monitorTableRow(item.name,
+                     item.description,
+                     item.checkType.charAt(0).toUpperCase() + item.checkType.slice(1))
+

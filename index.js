@@ -1,12 +1,15 @@
+
 const express = require('express');
 const app = express();
 const HealthCheck = require('system-healthcheck');
 const os = require('os');
+const path = require('path');
+const appPort = 8006;
+const config = require('config');
 
 var logger = require('./src/logger.js');
 
-const appPort = 8006;
-const config = require('config');
+
 
 let healthcheckObject = new HealthCheck(config.get('healthcheck'), logger);
 
@@ -17,8 +20,8 @@ function intervalFunc() {
 }
 
 
-app.get('/', (req, res) => {
-  res.send(`System Healthcheck Root.`);
+app.get('/api', (req, res) => {
+  res.send(`System Healthcheck API Root.`);
 });
 
 app.get('/api/runMonitor', (req, res) => {
@@ -42,6 +45,44 @@ app.get('/api/getItems', (req, res) => {
 
 });
 
+app.set("view engine", "pug");
+app.set("views", path.join(__dirname, "./views"));
+//app.use('/static', express.static('views'))
+//app.use(express.static(path.join(__dirname, "./public")));
+app.use("/public", express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+  res.render("homepage");
+});
+
+app.get("/listItems", (req, res) => {
+  var items = healthcheckObject.getItems();
+  res.render("listItems", {items: items});
+});
+
+app.get("/monitor", (req, res) => {
+  res.render("monitor", {items: []});
+});
+
+app.get("/runMonitor", (req, res) => {
+  //var items = healthcheckObject.monitor();
+
+  healthcheckObject.monitor()
+  .then(function (result) {
+
+    res.render("monitor", {items: result, dummyProp: "Yo"});
+  })
+  .catch(function(error) {
+    res.status(500).send(error);
+    res.render("monitor", {items: items, error: error, dummyProp: "Yo"});
+  });
+
+
+});
+
+app.get("/history", (req, res) => {
+  res.render("history");
+});
 
 app.listen(appPort, () => {
   logger.info(`Healthcheck App Started.  Live at http://${os.hostname()}/${appPort}.`);

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+  include ./partials/css
+  include ./mixins/monitorListItem.pug
+
+  body
+    include ./partials/menu
+    div(class="container")
+      h3 Monitoring the following items...
+
+      include ./partials/itemTable.pug
+
+    include ./partials/scripts.pug

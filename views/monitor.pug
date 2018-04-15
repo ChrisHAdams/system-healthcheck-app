@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+  include ./partials/css.pug
+
+  body
+    include ./partials/menu
+
+    div(class="container")
+      h2 System Monitor
+      p
+      a.btn.btn-primary( onclick="runMonitor()") Run Monitor
+      a.btn.btn-primary( onclick="runMonitor()") Run Monitor
+      p
+      div(class="monitorResults", id="monitorResults")
+        if items.length > 0
+          include ./partials/monitorResultsTable.pug
+        else if error
+          p error
+        else
+          p Nothing to show, yet.... Click Run Monitor
+
+    include ./partials/scripts.pug
+    script(src='/public/assets/common.js')
+    script(src='/public/assets/callMonitor.js')

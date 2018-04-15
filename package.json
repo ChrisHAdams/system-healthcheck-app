@@ -1,11 +1,12 @@
 {
   "name": "system-healthcheck-app",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Healthcheck app for monitoring services, databases and APIs.",
   "main": "index.js",
   "scripts": {
     "start": "export NODE_ENV=play; node index.js",
-    "watch": "export NODE_ENV=play; npm install; node node_modules/nodemon/bin/nodemon.js --watch src --watch config index.js",
+    "install-watch": "export NODE_ENV=play; npm install; node node_modules/nodemon/bin/nodemon.js --watch src --watch config index.js",
+    "watch": "export NODE_ENV=play; node node_modules/nodemon/bin/nodemon.js --watch views --watch src --watch config --watch public index.js",
     "test": "mocha 'src/**/*.tests.js' --reporter spec"
   },
   "author": "Chris Adams",
@@ -13,7 +14,8 @@
   "dependencies": {
     "config": "^1.30.0",
     "express": "^4.16.3",
-    "system-healthcheck": "^1.0.0",
+    "pug": "^2.0.3",
+    "system-healthcheck": "^1.2.6",
     "winston": "^2.4.1",
     "winston-daily-rotate-file": "^3.0.0"
   },
