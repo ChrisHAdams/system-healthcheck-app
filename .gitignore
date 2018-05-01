@@ -2,3 +2,4 @@ node_modules/
 monitor_reports/
 log/
 json/
+dist/

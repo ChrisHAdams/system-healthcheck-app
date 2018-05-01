@@ -45,44 +45,11 @@ app.get('/api/getItems', (req, res) => {
 
 });
 
-app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "./views"));
-//app.use('/static', express.static('views'))
-//app.use(express.static(path.join(__dirname, "./public")));
-app.use("/public", express.static(path.join(__dirname, "public")));
-
-app.get("/", (req, res) => {
-  res.render("homepage");
+app.use("/", express.static(path.join(__dirname, "dist")));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
-app.get("/listItems", (req, res) => {
-  var items = healthcheckObject.getItems();
-  res.render("listItems", {items: items});
-});
-
-app.get("/monitor", (req, res) => {
-  res.render("monitor", {items: []});
-});
-
-app.get("/runMonitor", (req, res) => {
-  //var items = healthcheckObject.monitor();
-
-  healthcheckObject.monitor()
-  .then(function (result) {
-
-    res.render("monitor", {items: result, dummyProp: "Yo"});
-  })
-  .catch(function(error) {
-    res.status(500).send(error);
-    res.render("monitor", {items: items, error: error, dummyProp: "Yo"});
-  });
-
-
-});
-
-app.get("/history", (req, res) => {
-  res.render("history");
-});
 
 app.listen(appPort, () => {
   logger.info(`Healthcheck App Started.  Live at http://${os.hostname()}/${appPort}.`);

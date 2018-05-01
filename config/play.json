@@ -3,6 +3,7 @@
   "sendEmail" : false,
   "items" : [
     {
+      "key":0,
       "name": "BBC Website",
       "description": "Ping BBC's website",
       "checkType": "website",
@@ -13,6 +14,7 @@
       }
     },
     {
+      "key":1,
       "name": "Google Website",
       "description": "Ping Google's website",
       "checkType": "website",
@@ -23,6 +25,7 @@
       }
     },
     {
+      "key": 2,
       "name": "Sky Website",
       "description": "Ping Sky's website",
       "checkType": "website",
@@ -33,6 +36,7 @@
       }
     },
     {
+      "key" : 3,
       "name": "Weather API",
       "description": "Ping Weather API",
       "checkType": "service",
@@ -43,6 +47,7 @@
       }
     },
     {
+      "key" : 4,
       "name": "Open Library API",
       "description": "Ping Open Library API",
       "checkType": "service",
@@ -53,6 +58,7 @@
       }
     },
     {
+      "key":5,
       "name": "Google IP Ping",
       "description": "Ping Google's IP Addresss",
       "checkType": "server",

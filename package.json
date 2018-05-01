@@ -7,20 +7,39 @@
     "start": "export NODE_ENV=play; node index.js",
     "install-watch": "export NODE_ENV=play; npm install; node node_modules/nodemon/bin/nodemon.js --watch src --watch config index.js",
     "watch": "export NODE_ENV=play; node node_modules/nodemon/bin/nodemon.js --watch views --watch src --watch config --watch public index.js",
-    "test": "mocha 'src/**/*.tests.js' --reporter spec"
+    "test": "mocha 'src/**/*.tests.js' --reporter spec",
+    "dev-client": "webpack --mode development ./client/index.js",
+    "build-client": "webpack --mode production ./client/index.js"
   },
   "author": "Chris Adams",
   "license": "ISC",
   "dependencies": {
+    "@blueprintjs/core": "^2.2.1",
     "config": "^1.30.0",
     "express": "^4.16.3",
     "pug": "^2.0.3",
+    "react-router-dom": "^4.2.2",
+    "react-transition-group": "^2.3.1",
     "system-healthcheck": "^1.2.6",
     "winston": "^2.4.1",
     "winston-daily-rotate-file": "^3.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "nodemon": "^1.17.2",
-    "onchange": "^3.3.0"
+    "onchange": "^3.3.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
   }
 }
