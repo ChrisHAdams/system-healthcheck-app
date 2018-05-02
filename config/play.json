@@ -67,6 +67,17 @@
         "expectedStatusCode": "Alive",
         "expectedMaxResponseTime": 100
       }
+    },
+    {
+      "key":6,
+      "name": "Bad Website",
+      "description": "Ping a bad website address",
+      "checkType": "website",
+      "url": "http://www.does.not.exist",
+      "expectedResults": {
+        "expectedStatusCode": "200",
+        "expectedMaxResponseTime": 100
+      }
     }
   ]}
 }

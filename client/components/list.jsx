@@ -11,12 +11,8 @@ class List extends React.Component {
 
 
   componentDidMount() {
-
     loadMonitorItems()
       .then(result => this.setState({monitorItems:result}));
-    //this.setState({monitorItems:loadMonitorItems()});
-    //console.log(items);
-    //this.setState({monitorItems:items});
   }
 
   render() {
