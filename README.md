@@ -1,5 +1,7 @@
 # I'm no longer maintaining this repo....
-I've created another healthcheck application you can find at [here](https://github.com/ChrisHAdams/application-healthcheck).  
+I've created another healthcheck application you can find at [here](https://github.com/ChrisHAdams/application-healthcheck).
+
+If you're still using this package and you need changes, then you can either get in touch or do it yourself.
 
 
 # System Healthcheck Application
