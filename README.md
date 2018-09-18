@@ -1,3 +1,7 @@
+# I'm no longer maintaining this repo....
+I've created another healthcheck application you can find at [here](https://github.com/ChrisHAdams/application-healthcheck).  
+
+
 # System Healthcheck Application
 
 ## A System Healthcheck Application
