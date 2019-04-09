@@ -3,6 +3,8 @@ I've created another healthcheck application you can find at [here](https://gith
 
 If you're still using this package and you need changes, then you can either get in touch or do it yourself.
 
+The most recent update was only made because of vunerability alerts.
+
 
 # System Healthcheck Application
 
