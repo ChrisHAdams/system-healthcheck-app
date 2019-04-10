@@ -6,7 +6,7 @@ If you're still using this package and you need changes, then you can either get
 The most recent update was only made because of vunerability alerts.
 
 
-# System Healthcheck Application [![Github Downloads (total)](https://img.shields.io/github/downloads/kotlin-graphics/kotlin-unsigned/total.svg)]()
+# System Healthcheck Application [![Github Downloads (total)](https://img.shields.io/github/downloads/ChrisHAdams/system-healthcheck-app/total.svg)]()
 
 ## A System Healthcheck Application
 
